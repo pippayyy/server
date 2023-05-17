@@ -61,8 +61,8 @@ const transporter = nodemailer.createTransport({
   port: 465, // true for 465, false for other ports
   host: "smtp.gmail.com",
   auth: {
-    user: "plantedhello@gmail.com",
-    pass: "glhbmxonreljlgph",
+    user: process.env.EMAIL_LOGIN,
+    pass: process.env.EMAIL_PASS,
   },
   secure: true,
 });
@@ -83,7 +83,7 @@ app.use(express.urlencoded({ extended: true }));
 //Setting up the session
 app.use(
   session({
-    secret: "Your_Secret_Key",
+    secret: process.env.SESSION_KEY,
     resave: true,
     saveUninitialized: true,
   })
