@@ -26,7 +26,7 @@ import {
 import express from "express";
 import session from "express-session";
 import bcrypt from "bcrypt";
-// import cors from "cors";
+import cors from "cors";
 import nodemailer from "nodemailer";
 import { getAllDiscounts, getDiscountCode } from "./lib/discount.js";
 import { getDeliveryOptions } from "./lib/delivery.js";
@@ -67,12 +67,14 @@ const transporter = nodemailer.createTransport({
   secure: true,
 });
 
-// var corsOptions = {
-//   origin: "https://planted.onrender.com",
-//   credentials: true,
-// };
+var corsOptions = {
+  // origin: "https://planted.onrender.com",
+  origin: "*",
+  credentials: true,
+  optionSuccessStatus: 200,
+};
 
-// app.use(cors(corsOptions));
+app.use(cors(corsOptions));
 
 // parse requests of content-type - application/json
 app.use(express.json());
