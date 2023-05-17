@@ -52,6 +52,18 @@ import {
 import multer from "multer";
 import fs from "fs";
 
+const MySQLStore = require("express-mysql-session")(session);
+
+const options = {
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASS,
+  database: process.env.DB_NAME,
+  port: "3306",
+};
+
+const sessionStore = new MySQLStore(options);
+
 const app = express();
 
 const saltRounds = 10;
@@ -84,8 +96,12 @@ app.use(express.urlencoded({ extended: true }));
 app.use(
   session({
     secret: process.env.SESSION_KEY,
-    resave: true,
-    saveUninitialized: true,
+    // resave: true,
+    // saveUninitialized: true,
+    key: "session_cookie_name",
+    store: sessionStore,
+    resave: false,
+    saveUninitialized: false,
   })
 );
 
