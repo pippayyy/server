@@ -97,12 +97,12 @@ app.use(express.urlencoded({ extended: true }));
 app.use(
   session({
     secret: process.env.SESSION_KEY,
-    // resave: true,
-    // saveUninitialized: true,
+    resave: true,
+    saveUninitialized: true,
     key: "session_cookie_name",
     store: sessionStore,
-    resave: false,
-    saveUninitialized: false,
+    // resave: false,
+    // saveUninitialized: false,
   })
 );
 
