@@ -101,10 +101,20 @@ app.use(
     saveUninitialized: true,
     key: "session_cookie_name",
     store: sessionStore,
-    // resave: false,
-    // saveUninitialized: false,
   })
 );
+
+// Optionally use onReady() to get a promise that resolves when store is ready.
+sessionStore
+  .onReady()
+  .then(() => {
+    // MySQL session store ready for use.
+    console.log("MySQLStore ready");
+  })
+  .catch((error) => {
+    // Something went wrong.
+    console.error(error);
+  });
 
 //Storage used for image upload - admin functionality
 const storageIcons = multer.diskStorage({
@@ -513,6 +523,9 @@ app.post("/admin/category/edit", async (req, res) => {
 //Used for sign in
 app.post("/signin", async (req, res) => {
   const validUserDetails = await getCustomer(req.body.userEmail);
+
+  console.log("req.session.id:", req.session.id);
+  console.log("session:", req.session);
 
   //Check if valid user
   if (validUserDetails.length > 0) {
