@@ -3,8 +3,8 @@ import mysql from "mysql2/promise";
 export const connection = await mysql
   .createConnection({
     host: process.env.DB_HOST,
-    user: "uyfeqyeoe0ckpsj8",
-    password: "ET4aPFBqOPiacApfCqrE",
+    user: process.env.DB_USER,
+    password: process.env.DB_PASS,
     database: "bsdinh8dsqfyrhcjssyy",
     port: "3306",
   })
