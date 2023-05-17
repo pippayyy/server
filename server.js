@@ -51,9 +51,9 @@ import {
 } from "./lib/admin.js";
 import multer from "multer";
 import fs from "fs";
-import { session as sessionmysql } from "express-mysql-session";
+import MySQLStore from "express-mysql-session";
 
-const MySQLStore = sessionmysql();
+const MySQLStoreSession = MySQLStore(session);
 
 const options = {
   host: process.env.DB_HOST,
@@ -63,7 +63,7 @@ const options = {
   port: "3306",
 };
 
-const sessionStore = new MySQLStore(options);
+const sessionStore = new MySQLStoreSession(options);
 
 const app = express();
 
