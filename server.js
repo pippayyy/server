@@ -68,7 +68,7 @@ const transporter = nodemailer.createTransport({
 });
 
 var corsOptions = {
-  origin: "http://planted.duckdns.org:5173",
+  origin: "https://planted.onrender.com",
   credentials: true,
 };
 
