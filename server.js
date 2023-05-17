@@ -109,10 +109,11 @@ sessionStore
   .onReady()
   .then(() => {
     // MySQL session store ready for use.
-    console.log("MySQLStore ready");
+    console.log("PIP MySQLStore ready");
   })
   .catch((error) => {
     // Something went wrong.
+    console.log("PIP MySQLStore not ready");
     console.error(error);
   });
 
