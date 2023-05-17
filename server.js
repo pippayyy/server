@@ -81,7 +81,11 @@ const transporter = nodemailer.createTransport({
 });
 
 var corsOptions = {
-  origin: ["https://planted.onrender.com", "http://localhost:3000"],
+  origin: [
+    "https://planted.onrender.com",
+    "http://localhost:3000",
+    "http://localhost:" + process.env.PORT,
+  ],
   credentials: true,
 };
 
