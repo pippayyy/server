@@ -2,7 +2,7 @@ import mysql from "mysql2/promise";
 
 export const connection = await mysql
   .createConnection({
-    host: "bsdinh8dsqfyrhcjssyy-mysql.services.clever-cloud.com",
+    host: process.env.DB_HOST,
     user: "uyfeqyeoe0ckpsj8",
     password: "ET4aPFBqOPiacApfCqrE",
     database: "bsdinh8dsqfyrhcjssyy",
