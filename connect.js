@@ -3,10 +3,10 @@ import mysql from "mysql2/promise";
 export const connection = await mysql
   .createConnection({
     host: process.env.DB_HOST,
-    user: "uyfeqyeoe0ckpsj8",
-    password: "ET4aPFBqOPiacApfCqrE",
-    database: "bsdinh8dsqfyrhcjssyy",
-    port: "3306",
+    user: process.env.DB_USER,
+    password: process.env.DB_PASS,
+    database: process.env.DB_NAME,
+    port: process.env.DB_PORT,
   })
   .then((conn) => {
     console.log("Connected to the MySQL server!");
